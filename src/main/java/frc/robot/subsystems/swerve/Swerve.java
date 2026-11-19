@@ -203,6 +203,7 @@ public class Swerve extends LoggedSubsystem implements AutoCloseable {
     }
 
     updateDriverRumble();
+    SwerveLEDHelper.updateLEDs(_autoAlignEnabled);
   }
 
   /** Reads the gyro and modules, and computes the robot's measured velocity. */

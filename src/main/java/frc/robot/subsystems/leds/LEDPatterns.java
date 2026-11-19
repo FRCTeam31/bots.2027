@@ -2,6 +2,8 @@ package frc.robot.subsystems.leds;
 
 import org.prime.util.LEDPatternUtil;
 
+import frc.robot.subsystems.prism.PrismMap;
+
 import org.wpilib.units.Units;
 import org.wpilib.units.measure.Time;
 import org.wpilib.hardware.led.LEDPattern;
@@ -73,7 +75,7 @@ public class LEDPatterns {
         public static final LEDPattern BlueGreenAlternatingBurstBlink = LEDPatternUtil.split(
                         BlueSlowBurstBlink,
                         GreenSlowBurstBlink,
-                        LEDMap.PixelsPerSection / 2);
+                        PrismMap.PIXELS_PER_STRIP / 2);
 
         // ==================== Factory Methods ================================
 

@@ -15,6 +15,12 @@ import org.wpilib.tunable.Tunables;
 import frc.robot.dashboard.DriverDashboard;
 import frc.robot.oi.BotControls;
 import frc.robot.pneumatics.Pneumatics;
+import frc.robot.subsystems.leds.ILEDs;
+import frc.robot.subsystems.prism.IPrism;
+import frc.robot.subsystems.prism.PrismMap;
+import frc.robot.subsystems.prism.PrismReal;
+import frc.robot.subsystems.prism.PrismSim;
+import frc.robot.subsystems.prism.PrismSubsystem;
 import frc.robot.subsystems.swerve.Swerve;
 import frc.robot.subsystems.vision.VisionMap;
 import frc.robot.subsystems.vision.limelight.LimelightVision;
@@ -24,7 +30,7 @@ public class Container {
   public static final DriverDashboard Dashboard = new DriverDashboard();
   public static final BotControls OperatorInterface = new BotControls();
 
-  // public static final PwmLEDs LEDs;
+  public static ILEDs LEDs;
   public static Swerve Swerve;
   public static AutoFactory AutoFactory;
   public static AutoChooser AutoChooser;
@@ -36,7 +42,14 @@ public class Container {
   static {
     try {
       // Create subsystems
-      // LEDs = new PwmLEDs();
+      LEDs = new PrismSubsystem(
+          switch (Robot.getMode()) {
+            case REAL -> new PrismReal(PrismMap.REAL_SERIAL_PORT);
+            case SIM -> new PrismSim(PrismMap.SIM_COM_PORT, PrismMap.SIM_BAUD_RATE);
+            case REPLAY -> new IPrism() {
+            };
+          },
+          PrismMap.STRIP_CONFIGS);
 
       LimelightVision = new LimelightVision()
           .addCamera(VisionMap.LimelightName, VisionMap.LimelightTransform);

@@ -80,6 +80,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-core:2.22.2'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.22'
 
+    // Serial access to the Prism LED controller from desktop simulation
+    implementation 'com.fazecast:jSerialComm:2.11.0'
+
     // AdvantageKit @AutoLog annotation processor (generates *AutoLogged input classes)
     def akitJson = new groovy.json.JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
     annotationProcessor "org.littletonrobotics.akit:akit-autolog:$akitJson.version"

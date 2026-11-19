@@ -32,6 +32,7 @@ import org.wpilib.command2.Command;
 import org.wpilib.command2.CommandScheduler;
 import org.wpilib.command2.Commands;
 import frc.robot.subsystems.leds.LEDPatterns;
+import frc.robot.subsystems.leds.MatchLEDHelper;
 
 public class Robot extends LoggedRobot {
 
@@ -74,12 +75,12 @@ public class Robot extends LoggedRobot {
         _hasEnteredTeleop)
         .rising()
         .ifHigh(() -> CommandScheduler.getInstance().schedule(Commands.sequence(
-            // Container.LEDs.setAllSectionPatternsCommand(
-            // LEDPatterns.fastBlink(Color.GREEN, Units.Milliseconds.of(50))),
-            Commands.waitSeconds(0.5)
-        // Container.LEDs
-        // .setAllSectionPatternsCommand(LEDPattern.solid(getAllianceColor()).breathe(Units.Seconds.of(3)))
-        ).ignoringDisable(true)));
+            Container.LEDs.setAllSectionPatternsCommand(
+                LEDPatterns.fastBlink(Color.GREEN, Units.Milliseconds.of(50))),
+            Commands.waitSeconds(0.5),
+            Container.LEDs
+                .setAllSectionPatternsCommand(LEDPattern.solid(getAllianceColor()).breathe(Units.Seconds.of(3))))
+            .ignoringDisable(true)));
   }
 
   /**
@@ -148,6 +149,9 @@ public class Robot extends LoggedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
     EventLoop.poll();
+
+    // Update match state LED strip
+    MatchLEDHelper.updateLEDs();
   }
 
   /**
