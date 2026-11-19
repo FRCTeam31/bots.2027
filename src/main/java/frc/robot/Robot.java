@@ -20,8 +20,6 @@ import org.wpilib.system.DataLogManager;
 import org.wpilib.driverstation.MatchState;
 import org.wpilib.driverstation.RobotState;
 import org.wpilib.driverstation.Alliance;
-import org.wpilib.driverstation.DriverStation;
-import org.wpilib.driverstation.MatchType;
 import org.wpilib.driverstation.DriverStationErrors;
 import org.wpilib.system.Filesystem;
 import org.wpilib.hardware.led.LEDPattern;
@@ -47,7 +45,10 @@ public class Robot extends LoggedRobot {
     REPLAY
   }
 
-  /** Mode to use when not on a real robot. Change to REPLAY to replay a log in AdvantageKit. */
+  /**
+   * Mode to use when not on a real robot. Change to REPLAY to replay a log in
+   * AdvantageKit.
+   */
   public static final Mode SIM_MODE = Mode.SIM;
 
   /** Whether hardware is real, simulated, or replayed from a log. */

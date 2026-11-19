@@ -1,6 +1,5 @@
 package org.prime.control;
 
-import org.prime.control.CommandXboxController;
 import org.wpilib.driverstation.XboxController.Axis;
 
 import java.util.function.DoubleSupplier;

@@ -3,8 +3,6 @@ package org.prime.subsystems;
 import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.inputs.LoggableInputs;
 
-import org.wpilib.units.Measure;
-import org.wpilib.units.Unit;
 import org.wpilib.util.WPISerializable;
 import org.wpilib.util.struct.StructSerializable;
 import org.wpilib.command2.SubsystemBase;

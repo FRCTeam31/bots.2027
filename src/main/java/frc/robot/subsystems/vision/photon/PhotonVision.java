@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.littletonrobotics.junction.Logger;
-// import org.photonvision.simulation.VisionSystemSim;
 import org.prime.subsystems.LoggedSubsystem;
 
 import org.wpilib.math.geometry.Pose3d;
@@ -13,7 +11,6 @@ import org.wpilib.math.geometry.Transform3d;
 import org.wpilib.command2.Command;
 import org.wpilib.command2.Commands;
 import frc.robot.Container;
-import frc.robot.FieldTargets;
 import frc.robot.Robot;
 import frc.robot.subsystems.vision.IVisionSubsystem;
 
