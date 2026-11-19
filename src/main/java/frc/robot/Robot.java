@@ -163,9 +163,10 @@ public class Robot extends LoggedRobot {
     if (_autonomousCommand != null)
       _autonomousCommand.cancel();
 
-    // _autonomousCommand = Container.AutoChooser.getSelected();
+    _autonomousCommand = Container.AutoChooser.selectedCommand();
 
-    if (_autonomousCommand == null || _autonomousCommand == Commands.none()) {
+    if (_autonomousCommand == null
+        || _autonomousCommand.getName().equals(Container.AutoChooser.getDefaultName())) {
       DriverStationErrors.reportError("[ERROR] >> No auto command selected", false);
     } else {
       // Reset the gyro immediately if we're on the red alliance to get the correct

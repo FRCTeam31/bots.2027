@@ -58,16 +58,16 @@ public class Container {
           .addCamera(VisionMap.PhotonCam2Name, VisionMap.PhotonCam2Transform);
 
       Swerve = new Swerve();
-      // AutoFactory = new AutoFactory(
-      // () -> Swerve.State.EstimatedRobotPose, // A function that returns the current
-      // robot pose
-      // Swerve::resetOdometry, // A function that resets the current robot pose to
-      // the provided Pose2d
-      // Swerve::followTrajectory, // The drive subsystem trajectory follower
-      // true, // If alliance flipping should be enabled
-      // Swerve // The drive subsystem
-      // );
-      // Build an auto chooser. This will use Commands.none() as the default option.
+      AutoFactory = new AutoFactory(
+          Swerve::getPose, // Current robot pose
+          Swerve::setPose, // Resets the pose estimate at the start of a trajectory
+          Swerve::followTrajectory, // Follows one Choreo trajectory sample
+          true, // Flip trajectories for the red alliance
+          Swerve // Drive subsystem required by trajectory commands
+      );
+
+      // Auto chooser. Its default "Nothing" option does nothing; register routines
+      // with AutoChooser.addRoutine(name, () -> AutoFactory.newRoutine(name)...)
       AutoChooser = new AutoChooser();
       Tunables.publish("Auto", AutoChooser);
 
